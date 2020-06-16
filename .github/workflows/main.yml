@@ -28,12 +28,11 @@ jobs:
     - uses: borales/actions-yarn@v2.0.0
       with:
         cmd: install # will run `yarn install` command
-    - name: installing node-sass
-      run: yarn add node-sass
-    - name: building yarn
-      run: yarn build
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: build
     - name: installing surge
-      run: yarn add surge globally
+      run: npm install -g surge
     - name: deploying with surge
       run: surge ./build react-gsap.surge.sh --token ${{secrets.SURGE_TOKEN}}
     
